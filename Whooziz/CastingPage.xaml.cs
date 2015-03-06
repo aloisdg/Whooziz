@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Windows.Media.Imaging;
+using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace Whooziz
 {
@@ -127,6 +128,7 @@ namespace Whooziz
                 NavigationService.Navigate(new Uri("/ActorPage.xaml?name=" + actor.Name + "&urlPoster=" + actor.UrlImages.First().Source, UriKind.Relative));
             }
         }
+
     }
 
     public class Actor

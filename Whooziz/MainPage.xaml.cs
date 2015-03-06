@@ -24,7 +24,7 @@ namespace Whooziz
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             List<Film> films = new List<Film>();
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 5; i++)
             {
                 films.Add(new Film
                 {

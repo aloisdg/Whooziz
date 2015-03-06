@@ -35,7 +35,7 @@
                        VerticalAlignment="Center" />
             </Grid>
             <Grid Grid.Column="1" Margin="24,0,0,0">
-                <TextBlock x:Name="NameBox" FontSize="48"/>
+                <TextBlock x:Name="NameBox" FontSize="48" TextWrapping="Wrap" />
             </Grid>
         </Grid>
 
