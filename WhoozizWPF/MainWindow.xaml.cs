@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -24,16 +25,16 @@ namespace WhoozizWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
         public MainWindow()
         {
             InitializeComponent();
-
             Loaded += MainWindow_Loaded;
         }
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
             var cancelToken = new CancellationTokenSource();
             var token = cancelToken.Token;
             // Create a task and pass the cancellation token
@@ -44,7 +45,6 @@ namespace WhoozizWPF
             //this stops the Task:
             //cancelToken.Cancel(false); //false indicates that no exceptions will be thrown.
 
-
         }
 
         //private void cancelNotification()
@@ -52,9 +52,11 @@ namespace WhoozizWPF
         //    Debug.WriteLine("Cancellation request made!!");
         //}
 
+        List<ImageItem> l = new List<ImageItem>();
+
         private async void Sample(CancellationToken cancellationToken)
         {
-            using (var client = new ServiceClient("key"))
+            using (var client = new ServiceClient("apikey"))
             {
                 for (int i = 1, count = 1000; i <= count; i++)
                 {
@@ -65,18 +67,35 @@ namespace WhoozizWPF
                     {
                         var movie = await client.Movies.GetAsync(m.Id, null, true, cancellationToken);
 
-                        var personIds = movie.Credits.Cast.Select(s => s.Id)
-                            .Union(movie.Credits.Crew.Select(s => s.Id));
+                        var personIds = movie.Credits.Cast.Select(s => s.Id);
+                            //.Union(movie.Credits.Crew.Select(s => s.Id));
 
                         foreach (var id in personIds)
                         {
                             var person = await client.People.GetAsync(id, true, cancellationToken);
 
-                            foreach (var img in person.Images.Results)
+                            var a = person.Images.Results;
+                            if (a.Any())
                             {
-                                string filepath = System.IO.Path.Combine("People", img.FilePath.TrimStart('/'));
-                                await DownloadImage(img.FilePath, filepath, cancellationToken);
+                                this.Dispatcher.Invoke((Action)(() =>
+                                    ImagesBox.Items.Add(new ImageItem
+                                    {
+                                        Source = "http://image.tmdb.org/t/p/w342" + a.First().FilePath
+                                    })));
+                                
                             }
+
+                            //foreach (var img in person.Images.Results)
+                            //{
+                            //    string filepath = System.IO.Path.Combine("People", img.FilePath.TrimStart('/'));
+                            //    //await DownloadImage(img.FilePath, filepath, cancellationToken);
+
+                            //    this.Dispatcher.Invoke((Action)(() =>
+                            //        ImagesBox.Items.Add(new ImageItem
+                            //        {
+                            //            Source = "http://image.tmdb.org/t/p/w342" + img.FilePath
+                            //        })));
+                            //}
                         }
                     }
                 }
