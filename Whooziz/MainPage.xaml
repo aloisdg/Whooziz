@@ -36,8 +36,8 @@
                             <Grid>
                                 <Image Source="{Binding UrlPoster}" />
                             </Grid>
-                            <Grid Grid.Column="1">
-                                <TextBlock Text="{Binding Name}"/>
+                            <Grid Grid.Column="1" Margin="24,0,0,0">
+                                <TextBlock Text="{Binding Name}" FontSize="36" TextWrapping="Wrap" />
                             </Grid>
                         </Grid>
                     </DataTemplate>

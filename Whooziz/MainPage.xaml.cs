@@ -28,8 +28,18 @@ namespace Whooziz
             {
                 films.Add(new Film
                 {
-                    UrlPoster = "http://4.bp.blogspot.com/_TKvTt6_QQP4/S9ADHTrM1mI/AAAAAAAAFQ0/YbFqbDqmFKU/s1600/hr_Iron_Man_poster.jpg",
-                    Name = "Iron Man 2"
+                    UrlPoster = "http://www.impawards.com/2001/posters/lord_of_the_rings_the_fellowship_of_the_ring_ver4.jpg",
+                    Name = "Le Seigneur des Anneaux 1"
+                });
+                films.Add(new Film
+                {
+                    UrlPoster = "https://www.movieposter.com/posters/archive/main/70/MPW-35483",
+                    Name = "Le Seigneur des Anneaux 2"
+                });
+                films.Add(new Film
+                {
+                    UrlPoster = "https://www.movieposter.com/posters/archive/main/16/MPW-8295",
+                    Name = "Le Seigneur des Anneaux 3"
                 });
             }
             FilmsBox.ItemsSource = films;

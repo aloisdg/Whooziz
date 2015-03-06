@@ -18,7 +18,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="120" />
-            <RowDefinition Height="120" />
+            <RowDefinition Height="160" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -26,15 +26,15 @@
 
         <Grid Grid.Row="1" Margin="24,24,24,0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
-                <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
             <Grid>
-                <Image x:Name="UrlPosterBox" Stretch="UniformToFill"
-                       VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <Image x:Name="UrlPosterBox" Stretch="Uniform"
+                       VerticalAlignment="Center" />
             </Grid>
-            <Grid Grid.Column="1">
-                <TextBlock x:Name="NameBox"/>
+            <Grid Grid.Column="1" Margin="24,0,0,0">
+                <TextBlock x:Name="NameBox" FontSize="48"/>
             </Grid>
         </Grid>
 
@@ -49,8 +49,8 @@
                                 <RowDefinition Height="120" />
                             </Grid.RowDefinitions>
 
-                            <Grid>
-                                <TextBlock Text="{Binding Name}"/>
+                            <Grid Margin="0,12">
+                                <TextBlock Text="{Binding Name}" FontSize="24"/>
                             </Grid>
                             <Grid Grid.Row="1">
 
