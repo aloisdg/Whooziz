@@ -18,24 +18,33 @@ namespace Whooziz
         {
             InitializeComponent();
 
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
+            Loaded += MainPage_Loaded;
         }
 
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
+        void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<Film> films = new List<Film>();
+            for (int i = 0; i < 15; i++)
+            {
+                films.Add(new Film
+                {
+                    UrlPoster = "http://4.bp.blogspot.com/_TKvTt6_QQP4/S9ADHTrM1mI/AAAAAAAAFQ0/YbFqbDqmFKU/s1600/hr_Iron_Man_poster.jpg",
+                    Name = "Iron Man 2"
+                });
+            }
+            FilmsBox.ItemsSource = films;
+        }
 
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
+        private void FilmsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
+
+        }
+    }
+
+    public class Film
+    {
+        public string UrlPoster { get; set; }
+        public string Name { get; set; }
     }
 }
