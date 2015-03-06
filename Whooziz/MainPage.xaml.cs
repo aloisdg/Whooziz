@@ -37,8 +37,11 @@ namespace Whooziz
 
         private void FilmsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-
+            var film = (FilmsBox.SelectedItem as Film);
+            if (film != null)
+            {
+                NavigationService.Navigate(new Uri("/CastingPage.xaml?name=" + film.Name + "&urlPoster=" + film.UrlPoster, UriKind.Relative));
+            }
         }
     }
 
